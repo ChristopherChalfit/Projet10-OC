@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
-
+// Changement du timer de 1000 a 900
 const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 900); })
 
 const Form = ({ onSuccess, onError }) => {
@@ -12,10 +12,10 @@ const Form = ({ onSuccess, onError }) => {
     async (evt) => {
       evt.preventDefault();
       setSending(true);
-      // We try to call mockContactApi
       try {
         await mockContactApi();
         setSending(false);
+        // Ajout de onSucces() si l'appel de l'API est OK
         onSuccess();
       } catch (err) {
         setSending(false);
